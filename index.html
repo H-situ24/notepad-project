@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="main">
+        <div id="con">
+            <h1 id="hh">smart notes</h1>
+        </div>
+        <div id="con2">
+            <label id="fs" class="ff">font size</label>
+            <input type="number" id="fs" onchange="sittu(this)" min=8 max=40 value=16>
+            <label for="color" id="clr" class="ff">BG-color</label>
+            <input type="color" id="color" class="inpt" name="color" onchange="bgchange(this)">
+            <label for="fcb" id="fc" class="ff">Font-color</label>
+            <input type="color" id="fcb" class="inpt" onchange="fgchange(this)">
+            <div id="icon">
+                <button id="btn1" class="btnn" onclick="bold(this)"><i class="fa-solid fa-bold"></i></button>
+                <button id="btn2" class="btnn" onclick="italic(this)"><i class="fa-solid fa-italic"></i></button>
+                <button id="btn3" class="btnn" onclick="underline(this)"><i class="fa-solid fa-underline"></i></button>
+            </div>
+        <textarea name="textarea" id="txt" cols="100" rows="30" placeholder="write from here.............."></textarea>
+        <div id="con3">
+            <label for="">word count:-</label>
+            <span class="m" id="wc">0</span>
+            <label for="">char count:-</label>
+            <span class="m" id="cc">0</span>
+        </div>
+    </div>
+    <script>
+        function sittu(e){
+            let val=e.value
+            var textarea=document.getElementById("txt")
+            textarea.style.fontSize=val+"px"
+        }
+        function bgchange(c){
+            var val=c.value
+            let textarea=document.getElementById("txt")
+            textarea.style.background=val
+        }
+        function fgchange(ff){
+            var val=ff.value
+            let textarea=document.getElementById("txt")
+            textarea.style.color=val
+        }
+        function bold(b){
+            var val=b.value
+            let textarea=document.getElementById("txt")
+            textarea.style.fontWeight="bold"
+        }
+        function italic(i){
+            var val=i.value
+            let textarea=document.getElementById("txt")
+            textarea.style.fontStyle="italic"
+        }
+        function underline(u){
+            var val=u.value
+            let textarea=document.getElementById("txt")
+            textarea.style.textDecoration="underline"
+        }
+        var charcount=document.getElementById("txt")
+        charcount.addEventListener("input",function(){
+            var char=this.value
+            var len=char.length
+            var noc=document.getElementById("cc")
+            noc.innerHTML=len
+            var char=char.trim()
+            let word=char.split(" ")
+            let fw=word.filter(function(c){
+                return c!=""
+            })
+            var now=document.getElementById("wc")
+            now.innerHTML=fw.length
+
+            
+        })
+        
+    </script>
+</body>
+</html>
